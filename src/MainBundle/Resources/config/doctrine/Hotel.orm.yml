@@ -1,0 +1,42 @@
+MainBundle\Entity\Hotel:
+    type: entity
+    table: null
+    repositoryClass: MainBundle\Repository\HotelRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        externalId:
+            type: integer
+            unique: true
+        name:
+            type: string
+            length: 255
+            nullable: true
+        url:
+            type: string
+            length: 255
+            nullable: true
+            unique: true
+        sellerNumber:
+            type: string
+            length: 255
+        secretCode:
+            type: string
+            length: 255
+    oneToMany:
+        locations:
+            targetEntity: MainBundle\Entity\Location
+            mappedBy: hotel
+            cascade: ["persist", "remove"]
+    manyToMany:
+        users:
+            targetEntity: MainBundle\Entity\User
+            mappedBy: hotels
+            cascade: ["persist"]
+
+
+    lifecycleCallbacks: {  }

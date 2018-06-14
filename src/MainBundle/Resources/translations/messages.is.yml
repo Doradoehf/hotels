@@ -1,0 +1,59 @@
+main:
+    userName: Notandanafn
+
+hotel:
+    name: Seljandi
+    users: Notendur
+    locations: Staðsetningar
+    showUsers: Skoða notendur
+    showLocations: Skoða staðsetningar
+    showAllHotels: Sýna öll hótel
+    showHotel: Sýna hótel
+
+show_locations:
+    locationName: Staðsetning
+    editLocation: Breyta
+    deletelocation: Eyða
+    checkTicket: Athuga miða
+    createLocation: Ný staðsetning
+    copyLocationUrl: Afrita slóð
+    hotelLocation: Hotel staðsetningu
+    showLocations: Sýna staðir
+
+create_locations:
+    locationName: Staðsetning
+    locationURL: Slóð fyrir staðsetningu
+    createLocation: Ný staðsetning
+
+show_users:
+    userName: Notandanafn
+    status: Staða
+    email: Netfang
+    editUser: Breyta
+    delete: Eyða
+    createUser: Stofna notanda
+    showAllUsers: Sýna alla notendur
+
+create_users:
+    email: Netfang
+    userName: Notandanafn
+    password: Lykilorð
+    roles: Hlutverk
+    createUser: Búa til notanda
+    editUser: Breyta notanda
+
+ticket:
+    checkTicket: Athugaðu miða
+    check: Athuga
+    use: Nota
+    useMessage: Ertu viss um að þú viljir nota þessa miða?
+    close: Hætta við
+    saveChanges: Staðfesta
+    ticket: Miðanúmer
+
+global:
+    submit: Stofna
+    save: Vista
+    loginPage: Innskráning síða
+    footer: Dorado ehf Engjateig 3, 105 Reykjavík 517-7535 dorado@dorado.is
+    copyAlert: Slóð afrituð

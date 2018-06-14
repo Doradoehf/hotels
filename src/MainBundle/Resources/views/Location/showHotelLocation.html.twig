@@ -1,0 +1,58 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ 'show_locations.hotelLocation' | trans }}{% endblock %}
+
+{% block body %}
+    {{  parent() }}
+    <div class="container main">
+        {% if locations is not null and locations is not empty %}
+            <table class="table table-responsive">
+                <thead>
+                <tr>
+                    <th>{{ 'show_locations.locationName' | trans }}</th>
+                    <th>{{ 'show_locations.editLocation' | trans }}</th>
+                    <th>{{ 'show_locations.deletelocation' | trans }}</th>
+                    <th>{{ 'show_locations.copyLocationUrl' | trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for location in locations %}
+                        <tr>
+                            <td><a href="{{ path('check_ticket', {'locationUrl':location.url, 'hotelUrl':location.hotel.url }) }}">{{ location.locationName }}</td>
+                            <td><a href="{{ path('edit_location', {'locationUrl':location.url, 'hotelUrl':location.hotel.url}) }}"><img class="active-image" src="{{ asset('image/edit.png') }}"></a></td>
+                            <td><a href="{{ path('delete_location', {'locationUrl':location.url, 'hotelUrl':location.hotel.url }) }}"><img class="active-image" src="{{ asset('image/rubbish.png') }}"></a></td>
+                            <td class="icon-copy"><i onclick="copyToClipboard('{{ baseUrl }}/{{ hotelUrl }}/{{ location.url }}')" class="fa fa-files-o" aria-hidden="true"></i></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        <a class="btn btn-general" href="{{ path("create_location", {'hotelUrl': hotelUrl}) }}" role="button">{{ 'show_locations.createLocation' | trans }}</a>
+    </div>
+    <div class="modal fade" tabindex="-1" id="smallModal" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    {{ 'global.copyAlert' | trans }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(element).select();
+            document.execCommand("copy");
+            $temp.remove();
+            $('#smallModal').modal('show');
+        }
+    </script>
+{% endblock %}

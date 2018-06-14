@@ -1,0 +1,24 @@
+MainBundle\Entity\User:
+    type: entity
+    table: fos_user
+    repositoryClass: MainBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToMany:
+        hotels:
+            targetEntity: MainBundle\Entity\Hotel
+            inversedBy: users
+            cascade: ["persist"]
+            joinTable:
+                name: users_hotels
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    hotel_id:
+                        referencedColumnName: id
+    lifecycleCallbacks: {  }

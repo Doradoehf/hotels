@@ -1,0 +1,44 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_SUPER_SUPER_ADMIN: ROLE_SUPER_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                success_handler: demo.login_success_handler
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/nologin, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/admin/update-user, role: ROLE_ADMIN}
+        - { path: ^/admin/create-user, role: ROLE_ADMIN}
+        - { path: ^/admin/edit-role, role: ROLE_ADMIN}
+        - { path: ^/admin/edit/hotel, role: ROLE_ADMIN}
+        - { path: ^/admin/delete/user, role: ROLE_ADMIN}
+        - { path: ^/admin/show-users, role: ROLE_ADMIN}
+
+        - { path: ^/user/select-location, role: ROLE_USER}
+
+        - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
+        - { path: ^/manager/, role: ROLE_ADMIN }
+        - { path: ^/user/, role: ROLE_USER }

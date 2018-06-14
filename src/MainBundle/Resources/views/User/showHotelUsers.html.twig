@@ -1,0 +1,40 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Show all users{% endblock %}
+
+{% block body %}
+    {{  parent() }}
+    <div class="container">
+        {% if users.current.id is defined %}
+            <table class="table table-responsive">
+                <thead>
+                <tr>
+                    <th>{{ 'show_users.userName' | trans }}</th>
+                    <th>{{ 'show_users.status' | trans }}</th>
+                    <th>{{ 'show_users.email' | trans }}</th>
+                    <th>{{ 'show_users.editUser' | trans }}</th>
+                    <th>{{ 'show_users.delete' | trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.userRole }}</td>
+                        <td>{{ user.email }}</td>
+                        <td><a href="{{ path('update_user', {'userId': user.id, 'externalId': externalId }) }}"><img class="active-image" src="{{ asset('image/edit.png') }}"></a></td>
+                        <td>
+                            {% if  user.id == userId %}
+                                <img class="active-image disable" src="{{ asset('image/rubbish.png') }}">
+                            {% else %}
+                                <a href="{{ path('delete_user', { 'externalId': externalId , 'userId': user.id }) }}"><img class="active-image" src="{{ asset('image/rubbish.png') }}"></a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+            <a class="btn btn-general" href="{{ path("create_user", {'externalId': externalId}) }}" role="button">{{ 'show_users.createUser' | trans }}</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+MainBundle\Entity\Location:
+    type: entity
+    table: null
+    repositoryClass: MainBundle\Repository\LocationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        locationName:
+            type: string
+            length: 255
+            nullable: true
+        url:
+            type: string
+            length: 255
+            nullable: true
+            unique: true
+        ternimal:
+            type: string
+            length: 255
+            nullable: true
+    manyToOne:
+        hotel:
+            targetEntity: MainBundle\Entity\Hotel
+            inversedBy: locations
+            cascade: ["persist"]
+            joinColumn:
+                name: hotel_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

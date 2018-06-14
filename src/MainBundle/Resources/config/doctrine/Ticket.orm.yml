@@ -1,0 +1,29 @@
+MainBundle\Entity\Ticket:
+    type: entity
+    table: null
+    repositoryClass: MainBundle\Repository\TicketRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        task:
+            type: string
+            length: 255
+        ticketNumber:
+            type: string
+            length: 255
+        secretCode:
+            type: string
+            length: 255
+        sellerNumber:
+            type: string
+            length: 255
+        ternimalNumber:
+            type: string
+            length: 255
+        globalLanguage:
+            type: integer
+    lifecycleCallbacks: {  }

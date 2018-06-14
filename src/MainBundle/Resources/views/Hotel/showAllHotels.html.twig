@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ 'hotel.showAllHotels' | trans }}{% endblock %}
+
+{% block body %}
+    {{  parent() }}
+    <div class="container main">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>{{ 'hotel.name' | trans }}</th>
+                            <th>{{ 'hotel.users' | trans }}</th>
+                            <th>{{ 'hotel.locations' | trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for hotel in hotels %}
+                            <tr>
+                                <td>{{ hotel.name }}</td>
+                                <td><a class="underline" href="{{ path('show_hotel_users', {'externalId': hotel.externalId}) }}">{{ 'hotel.showUsers' | trans }}</a></td>
+                                <td><a class="underline" href="{{ path('show_locations', {'hotelUrl': hotel.url}) }}">{{ 'hotel.showLocations' | trans }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+main:
+    userName: Username
+
+hotel:
+    name: Hotel name
+    users: Users
+    locations: Locations
+    showUsers: Show users
+    showLocations: Show locations
+    showAllHotels: Show all hotels
+    showHotel: Show hotel
+
+show_locations:
+    locationName: Location name
+    editLocation: Edit location
+    deletelocation: Delete location
+    checkTicket: Check ticket
+    createLocation: Create location
+    copyLocationUrl: Copy location url
+    hotelLocation: Hotel location
+    showLocations: Show locations
+
+create_locations:
+    locationName: Location name
+    locationURL: Location URL
+    createLocation: Create location
+
+show_users:
+    userName: User name
+    status: Status
+    email: E-mail
+    editUser: Edit user
+    delete: Delete
+    createUser: Create user
+    showAllUsers: Show all users
+
+create_users:
+    email: E-mail
+    userName: User name
+    password: Password
+    roles: Roles
+    createUser: Create user
+    editUser: Edit user
+
+ticket:
+    checkTicket: Check ticket,
+    check: Check
+    use: Use
+    useMessage: Are you sure you want to use this ticket?
+    close: Close
+    saveChanges: Save changes
+    ticket: Ticket
+
+global:
+    submit: submit
+    save: save
+    loginPage: Login page
+    footer: Dorado ehf Engjateig 3, 105 Reykjavík 517-7535 dorado@dorado.is
+    copyAlert: URL copied
+
+
