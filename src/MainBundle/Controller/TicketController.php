@@ -68,7 +68,7 @@ class TicketController extends Controller
                 $getBody =  (string) $getResult->getBody();
                 $dataArray = json_decode($getBody, true);
 
-                if(is_null($dataArray['used_time']) || $dataArray['used_time'] == '0000-00-00'){
+                if(is_null($dataArray['used_time']) || $dataArray['used_time'] == '0000-00-00 00:00:00'){
                     $date = '';
                 } else{
                     $date = (string) (new \DateTime($dataArray['used_time']))->format('d.m.Y h:i:s') . ' ';
