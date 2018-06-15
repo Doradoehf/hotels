@@ -118,7 +118,7 @@ class TicketController extends Controller
                 $icelandResponse = 'Miðanúmeri hefur ekki verið úthlutað eða finnst ekki í kerfinu. Athugaðu hvort að númerið sé rétt slegið inn.';
                 break;
             case 'Ticket use successfully':
-                $icelandResponse = 'Miðanúmeri hefur verið úthlutað en ekki notað.';
+                $icelandResponse = 'Aðgerð tókst: Miðinn hefur verið notaður.';
                 break;
             default: $icelandResponse = $body;
                 break;
