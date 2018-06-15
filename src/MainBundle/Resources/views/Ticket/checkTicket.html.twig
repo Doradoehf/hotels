@@ -70,12 +70,12 @@
                     var textMessage = '<span class="error size">' + $('.ticket').val() + '</span> <br />';
                     setMessage(textMessage, response);
                 }).done(function() {
-````````````````````$.post('{{ path('get_ticket') }}', {"ticket": $('.ticket').val(), "locationUrl": "{{ locationUrl }}" }, function (response) {
-                    ````console.log(response);
-                    ````var textMessage = '<span class="error size">' + $('.ticket').val() + '</span> <br />';
-                    ````setMessage(textMessage, response);
-                    ````toggelDisabled(false);
-                ````});
+                    $.post('{{ path('get_ticket') }}', {"ticket": $('.ticket').val(), "locationUrl": "{{ locationUrl }}" }, function (response) {
+                        console.log(response);
+                        var textMessage = '<span class="error size">' + $('.ticket').val() + '</span> <br />';
+                        setMessage(textMessage, response);
+                        toggelDisabled(false);
+                    });
                 }).fail(function(response) {
                     console.log('error');
                 }).always(function() {
