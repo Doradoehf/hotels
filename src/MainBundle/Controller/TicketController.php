@@ -110,6 +110,7 @@ class TicketController extends Controller
                 'global_language' => 8 ]
         ]);
 
+
         $body =  (string) $result->getBody();
         $englishResponse = substr($body, 8, strpos($body, '.') - 8);
 
