@@ -41,7 +41,7 @@ class TicketController extends Controller
         $client = new Client();
         $ticket = $requestFromUser->request->get('ticket');
 
-        $result = $client->request('POST', 'http://orlof.is/midja/interface/product_use_action.php',[
+        $result = $client->request('POST', 'https://orlof.is/midja/interface/product_use_action.php',[
             'form_params' => ['task' => 'check',
                 'ticket_number' =>  $ticket,
                 'secret_code' => $location->getHotel()->getSecretCode(),
@@ -59,7 +59,7 @@ class TicketController extends Controller
                 break;
             case 'The ticket number has been used':
                 $icelandResponse = 'Miðanúmerið hefur verið notað.';
-                $getResult = $client->request('POST', 'http://orlof.is/midja/interface/product_use_action.php',[
+                $getResult = $client->request('POST', 'https://orlof.is/midja/interface/product_use_action.php',[
                     'form_params' => ['task' => 'get',
                         'ticket_number' =>  $ticket,
                         'global_language' => 8,
@@ -101,7 +101,7 @@ class TicketController extends Controller
 
         $client = new Client();
         $ticket = $requestFromUser->request->get('ticket');
-        $result = $client->request('POST', 'http://orlof.is/midja/interface/product_use_action.php',[
+        $result = $client->request('POST', 'https://orlof.is/midja/interface/product_use_action.php',[
             'form_params' => ['task' => 'use',
                 'ticket_number' =>  $ticket,
                 'secret_code' => $location->getHotel()->getSecretCode(),

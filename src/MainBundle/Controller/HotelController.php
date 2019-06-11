@@ -24,7 +24,7 @@ class HotelController extends Controller
 
 
         $client = new Client();
-        $result = $client->request('POST', 'http://orlof.is/midja/interface/product_use_action.php', [
+        $result = $client->request('POST', 'https://orlof.is/midja/interface/product_use_action.php', [
             'form_params' => ['task' => 'getHotels']
         ]);
 
