@@ -34,7 +34,7 @@ class TicketController extends Controller
      */
     public function getTicketInfoAction(Request $requestFromUser)
     {
-        $locationUrl = $requestFromUser->request->get('locationUrl');
+	$locationUrl = $requestFromUser->request->get('locationUrl');
         $manager = $this->getDoctrine()->getManager();
         $location = $manager->getRepository('MainBundle:Location')->findOneBy(['url' => $locationUrl]);
 
@@ -47,11 +47,13 @@ class TicketController extends Controller
                 'secret_code' => $location->getHotel()->getSecretCode(),
                 'seller_number' => $location->getHotel()->getSellerNumber(),
                 'ternimal_number' => $location->getLocationName(),
-                'global_language' => 8 ]
+                'global_language' => 8]
             ]);
 
         $body =  (string) $result->getBody();
-        $englishResponse = substr($body, 8, strpos($body, '.') - 8);
+        $englishResponse = substr($body, 4, strpos($body, '.') -4);
+
+	// var_dump($body, $englishResponse); exit;
 
         switch ($englishResponse) {
             case 'The ticket number has not been assigned or not found in the system':
@@ -73,8 +75,11 @@ class TicketController extends Controller
                 } else{
                     $date = (string) (new \DateTime($dataArray['used_time']))->format('d.m.Y h:i:s') . ' ';
                 }
+	
+		$dataArray['terminal_number'] = utf8_decode((string) $dataArray['terminal_number']);		
 
-                $icelandResponse .= '<br />' . $date . (string) $dataArray['terminal_number'];
+                $icelandResponse .= '<br />' . $date . $dataArray['terminal_number'];
+	
                 break;
             case 'The ticket number has been assigned but not used':
                 $icelandResponse = 'Miðanúmeri hefur verið úthlutað en ekki notað.';
